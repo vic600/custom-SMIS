@@ -1,0 +1,84 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <app-subnav></app-subnav>
+    <section class="content" style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <ngx-spinner color="yellow" size="large" loadingText="Processing..." type="ball-climbing-dot"></ngx-spinner>
+      <div class="row">
+
+        <div class="col-md-12" *ngIf="!hide">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Orders /Bills</h3>
+
+              <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                  <input type="text" [(ngModel)]="term" class="form-control pull-right" placeholder="Search">
+
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <div class="scrollable">
+                <table class="table table-hover">
+                  <tr>
+                    <th class="text-center">
+                      <span class="fa fa-barcode"></span>
+                    </th>
+                    <th class="text-center">
+                      <span class="fa fa-gift"></span>
+                    </th>
+                    <th class="text-center">
+                      <span class="fa fa-euro"></span>
+                    </th>
+                    <th class="text-center">
+                      <span class="fa fa-shopping-cart"></span>
+                    </th>
+                    <th class="text-center">
+                      <span class="fa fa-credit-card"></span>
+                    </th>
+                    <th class="text-center">
+                      <span class="fa fa-money"></span>
+                    </th>
+                    <th class="text-center">
+                      <span class="fa fa-dollar"></span>
+                    </th>
+                    <th class="text-center">
+                      <span class="fa fa-user-secret"></span>
+                    </th>
+                    <th class="text-center">
+                      <span class="fa fa-calendar"></span>
+                    </th>
+                  </tr>
+                  <tr *ngFor="let sale of bills |filter:term">
+                    <td class="text-center">{{sale._id}}</td>
+                    <td class="text-center">{{sale.product}}</td>
+                    <td class="text-center">{{sale.price}}</td>
+                    <td class="text-center">{{sale.quantity}}</td>
+                    <td class="text-center">{{sale.paid}}</td>
+                    <td class="text-center">{{sale.change}}</td>
+                    <td class="text-center">{{sale.total}}</td>
+                    <td class="text-center">{{sale.servedby}}</td>
+                    <td class="text-center">{{sale.date}}</td>
+
+
+                  </tr>
+
+                </table>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+
+      </div>
+
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

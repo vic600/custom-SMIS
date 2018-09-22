@@ -1,0 +1,45 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <section class="content" style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <ngx-spinner color="red" size="large" type="pacman"></ngx-spinner>
+      <div class="login-box">
+        <div class="login-logo">
+          <a>
+            <b></b>Recover Password</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+          <p class="login-box-msg">Provide Email to Reset Password</p>
+
+          <form [formGroup]="form" (submit)="onresetmail()">
+            <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.email.errors && form.controls.email.dirty),'has-success':!form.controls.email.errors}">
+              <input type="email" class="form-control" name="email" placeholder="Email" formControlName="email">
+              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              <ul class="help-block">
+                <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">Email is required</li>
+                <li *ngIf="form.controls.email.errors?.validemail && form.controls.email.dirty">Provide a valid email</li>
+              </ul>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8"></div>
+              <!-- /.col -->
+              <div class="col-md-4">
+                <button type="submit" [disabled]="!form.valid || processing" class="btn btn-primary btn-block btn-flat pull-right">Send</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+
+        </div>
+        <!-- /.login-box-body -->
+
+      </div>
+      <!-- /.login-box -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

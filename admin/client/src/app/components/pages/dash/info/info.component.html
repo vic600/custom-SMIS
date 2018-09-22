@@ -1,0 +1,81 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <app-subnav></app-subnav>
+    <section class="content" style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <ngx-spinner color="yellow" size="large" type="ball-climbing-dot"></ngx-spinner>
+      <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8" *ngIf="!hide">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">School Information</h3>
+
+              <div class="box-tools">
+                <a routerLink="/addinfo" class="btn btn-default btn-flat btn-block btn-success">
+                  <span class="fa fa-plus"> </span>
+                  <span class="fa fa-institution"></span>
+                </a>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+
+                  <th class="text-center">
+                    <span class="fa fa-institution"></span>
+                  </th>
+                  <th class="text-center">
+                    <span class="fa fa-fire"></span>
+                  </th>
+                  <th class="text-center">
+                    <span class="fa fa-location-arrow"></span>
+                  </th>
+                  <th class="text-center">
+                    <span class="fa fa-phone"></span>
+                  </th>
+                  <th class="text-center">
+                    <span class="fa fa-envelope"></span>
+                  </th>
+
+                </tr>
+                <tr *ngFor="let information of info">
+
+                  <td class="text-center">{{information.title}}</td>
+                  <td class="text-center">{{information.motto}}</td>
+                  <td class="text-center">{{information.address}}</td>
+                  <td class="text-center">{{information.phone}}</td>
+                  <td class="text-center">{{information.email}}</td>
+                  <td class="text-center">
+                    <a [routerLink]="['/editinfo/',information._id]" class="btn btn-sm btn-primary btn-flat">
+                      <span class="fa fa-edit"></span>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a [routerLink]="['/deleteinfo/',information._id]" class="btn btn-sm btn-danger btn-flat">
+                      <span class="fa fa-trash"></span>
+                    </a>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <div class="col-md-2">
+
+        </div>
+      </div>
+
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

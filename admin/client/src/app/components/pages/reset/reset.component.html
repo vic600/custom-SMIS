@@ -1,0 +1,63 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <section class="content" style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <ngx-spinner color="red" size="large" type="pacman"></ngx-spinner>
+      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-4" *ngIf="!hide">
+        <div class="register-box">
+          <div class="register-logo">
+            <a>
+              <b>Password Reset</b>
+            </a>
+          </div>
+
+          <div class="register-box-body">
+            <p class="login-box-msg">Fill New Password</p>
+
+            <form [formGroup]="form" (submit)="onpass()">
+              <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.password.errors && form.controls.password.dirty),'has-success':!form.controls.password.errors}">
+                <input type="password" class="form-control" name="password" placeholder="Password" formControlName="password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">password is required</li>
+                  <li *ngIf="(form.controls.password.errors?.maxlength || form.controls.password.errors?.minlength)&& form.controls.password.dirty">password of 4 and maximum of 20</li>
+                  <li *ngIf="form.controls.password.errors?.validatepassword && form.controls.password.dirty">uppercase,numbers,small and special characters</li>
+                </ul>
+              </div>
+              <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.confirm.errors && form.controls.confirm.dirty) || (form.errors?.matchingpasswords && form.controls.confirm.dirty),'has-success':!form.controls.confirm.errors && !form.errors?.matchingpasswords}">
+                <input type="password" class="form-control" name="confirm" placeholder="Retype password" formControlName="confirm">
+                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">confirmation is required</li>
+
+                  <li *ngIf="form.errors?.matchingpasswords && form.controls.confirm.dirty">passwords do not match</li>
+                </ul>
+              </div>
+              <div class="row">
+                <div class="col-md-8"></div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                  <button [disabled]="!form.valid || processing" type="submit" class="btn btn-primary btn-block btn-flat pull-right">Reset</button>
+                </div>
+                <!-- /.col -->
+              </div>
+            </form>
+          </div>
+          <!-- /.form-box -->
+
+
+        </div>
+        <!-- /.register-box -->
+      </div>
+      <div class="col-md-4">
+
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

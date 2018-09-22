@@ -1,0 +1,62 @@
+<!-- Full Width Column -->
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="orange" loadingText="Processing..." type="ball-clip-rotate"></ngx-spinner>
+    <!-- Content Header (Page header) -->
+    <app-subnav></app-subnav>
+    <!-- Main content -->
+    <section class="content"  style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-6">
+        <div class="row show-hide-message">
+          <div [ngClass]="messageclass">
+            {{message}}
+            <br>
+            <a [routerLink]="['/receipt/',paid]">{{paid}}</a>
+          </div>
+        </div>
+        <!-- Horizontal Form -->
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Balance Payment</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form class="form-horizontal" [formGroup]="form" (submit)="onrepayment()">
+            <div class="box-body">
+              <div class="form-group" [ngClass]="{'has-error':(form.controls.amount.errors && form.controls.amount.dirty),'has-success':!form.controls.amount.errors}">
+                <label for="inputPassword3" class="col-sm-2 control-label">Amount</label>
+
+                <div class="col-sm-10">
+                  <input type="text" name="amount" class="form-control" placeholder="Amount" formControlName="amount">
+                </div>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.amount.errors?.required && form.controls.amount.dirty">Amount is reqired</li>
+                  <li *ngIf="form.controls.amount.errors?.validateamount && form.controls.amount.dirty">Amount must be a Number</li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <!-- <button type="submit" class="btn btn-default">Cancel</button> -->
+              <button [disabled]="!form.valid || processing" type="submit" class="btn btn-success pull-right btn-flat">Pay</button>
+            </div>
+            <!-- /.box-footer -->
+          </form>
+
+        </div>
+        <!-- /.box -->
+      </div>
+      <div class="col-md-3">
+
+      </div>
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

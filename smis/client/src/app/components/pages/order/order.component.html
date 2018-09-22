@@ -1,0 +1,89 @@
+<!-- Full Width Column -->
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="orange" loadingText="Processing..." type="ball-clip-rotate"></ngx-spinner>
+    <!-- Content Header (Page header) -->
+<app-subnav></app-subnav>
+    <!-- Main content -->
+    <section class="content"  style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-6">
+        <div class="row show-hide-message">
+          <div [ngClass]="messageclass">
+            {{message}}
+            <br>
+            <a [routerLink]="['/slip/',sale]">{{sale}}</a>
+          </div>
+        </div>
+        <!-- Horizontal Form -->
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Make an Order</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form class="form-horizontal" [formGroup]="form" (submit)="onorder()">
+            <div class="box-body">
+              <div class="form-group" [ngClass]="{'has-error':(form.controls.product.errors && form.controls.product.dirty),'has-success':!form.controls.product.errors}">
+                <label for="inputEmail3" class="col-sm-2 control-label">Product</label>
+
+                <div class="col-sm-10">
+
+                  <select class="form-control" name="product" formControlName="product">
+                    <option *ngFor="let item of kits" [value]="item._id">{{item.product}}</option>
+                  </select>
+                </div>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.product.errors?.required && form.controls.product.dirty">product is reqired</li>
+
+                </ul>
+              </div>
+              <div class="form-group"  [ngClass]="{'has-error':(form.controls.quantity.errors && form.controls.quantity.dirty),'has-success':!form.controls.quantity.errors}">
+                <label for="inputPassword3" class="col-sm-2 control-label">Quantity</label>
+
+                <div class="col-sm-10">
+                  <input type="Number" name="quantity" class="form-control" placeholder="Quantity" formControlName="quantity">
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.quantity.errors?.required && form.controls.quantity.dirty">quantity is reqired</li>
+                    <li *ngIf="form.controls.quantity.errors?.validq && form.controls.quantity.dirty">quantity must be a number</li>
+                  </ul>
+                </div>
+               
+              </div>
+              <div class="form-group"  [ngClass]="{'has-error':(form.controls.paid.errors && form.controls.paid.dirty),'has-success':!form.controls.paid.errors}">
+                <label for="inputPassword3" class="col-sm-2 control-label">Amount</label>
+
+                <div class="col-sm-10">
+                  <input type="Number" name="paid" class="form-control" placeholder="Amount" formControlName="paid">
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.paid.errors?.required && form.controls.paid.dirty">Payment is reqired</li>
+                    <li *ngIf="form.controls.paid.errors?.validq && form.controls.paid.dirty">Payment must be a number</li>
+                  </ul>
+                </div>
+          
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <!-- <button type="submit" class="btn btn-default">Cancel</button> -->
+              <button [disabled]="!form.valid || processing" type="submit" class="btn btn-success pull-right btn-flat">Order</button>
+            </div>
+            <!-- /.box-footer -->
+          </form>
+
+        </div>
+        <!-- /.box -->
+      </div>
+      <div class="col-md-3">
+
+      </div>
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

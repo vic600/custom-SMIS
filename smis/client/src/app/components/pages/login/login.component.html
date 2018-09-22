@@ -1,0 +1,67 @@
+<!-- Full Width Column -->
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="orange" loadingText="Processing..." type="ball-clip-rotate"></ngx-spinner>
+    <!-- Content Header (Page header) -->
+    <ngx-msg></ngx-msg>
+
+    <!-- Main content -->
+    <section class="content"  style="height:1000px">
+
+      <div class="col-xs-12 col-sm-12 col-md-4 ">
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 ">
+        <div class="login-box">
+          <div class="login-logo">
+            <b>Login</b>
+          </div>
+          <!-- /.login-logo -->
+          <div class="login-box-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+
+            <form [formGroup]="form" (submit)="onlogin()">
+              <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.email.errors && form.controls.email.dirty),'has-success':!form.controls.email.errors}">
+                <input type="email" class="form-control" name="email" placeholder="Email" formControlName="email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">email is reqired</li>
+                </ul>
+              </div>
+              <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.password.errors && form.controls.password.dirty),'has-success':!form.controls.password.errors}">
+                <input type="password" class="form-control" name="password" placeholder="Password" formControlName="password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">password is reqired</li>
+                </ul>
+              </div>
+              <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                  <button type="submit" [disabled]="!form.valid || processing" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                </div>
+
+                <!-- /.col -->
+              </div>
+            </form>
+
+
+
+            <a href="#">I forgot my password</a>
+            <br>
+            <a routerLink="/register" class="text-center">Register a new membership</a>
+
+          </div>
+          <!-- /.login-box-body -->
+        </div>
+        <!-- /.login-box -->
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 ">
+
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

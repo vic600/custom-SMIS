@@ -1,0 +1,96 @@
+<header class="main-header">
+  <nav class="navbar navbar-static-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a routerLink="/" class="navbar-brand">
+          <b>SMIS</b>
+        </a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li *ngIf="authservice.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a routerLink="/dash">
+              <span class="fa fa-tachometer"></span> Dash </a>
+
+          </li>
+          <li *ngIf="authservice.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a routerLink="/order">
+              <span class="fa fa-opencart"></span> Order </a>
+          </li>
+          <li *ngIf="authservice.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a routerLink="/pay">
+              <span class="fa fa-money"></span> Pay </a>
+          </li>
+          <!-- <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="#">Action</a>
+              </li>
+              <li>
+                <a href="#">Another action</a>
+              </li>
+              <li>
+                <a href="#">Something else here</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">Separated link</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">One more separated link</a>
+              </li>
+            </ul>
+          </li> -->
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+
+          <!-- Notifications Menu -->
+          <li *ngIf="!authservice.loggedIn()" class="dropdown notifications-menu" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <!-- Menu toggle button -->
+            <a routerLink="/login">
+              <i class="fa fa-sign-in"> Login</i>
+
+            </a>
+          </li>
+
+          <!-- Notifications Menu -->
+          <li *ngIf="!authservice.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="dropdown notifications-menu">
+            <!-- Menu toggle button -->
+            <a routerLink="/register" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-user-plus"> Register</i>
+
+            </a>
+
+          </li>
+         
+          <!-- Notifications Menu -->
+          <li *ngIf="authservice.loggedIn()" class="dropdown notifications-menu" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <!-- Menu toggle button -->
+            <a (click)="onlogout()">
+              <i class="fa fa-sign-out"> Logout</i>
+
+            </a>
+
+          </li>
+
+        </ul>
+      </div>
+      <!-- /.navbar-custom-menu -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+</header>

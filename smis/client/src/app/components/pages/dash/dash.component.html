@@ -1,0 +1,140 @@
+<!-- Full Width Column -->
+<div class="content-wrapper">
+
+    <div class="container-fluid">
+        <!-- Content Header (Page header) -->
+        <app-subnav></app-subnav>
+        <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="orange" loadingText="Processing..." type="ball-clip-rotate"></ngx-spinner>
+        <!-- Content Header (Page header) -->
+        <ngx-msg></ngx-msg>
+
+        <!-- Main content -->
+        <section class="content" style="height:1000px">
+            <div class="col-md-4" *ngIf="!hide">
+                <!-- Widget: user widget style 1 -->
+                <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-yellow">
+                        <div class="widget-user-image">
+                            <span class="fa fa-institution"></span>
+                        </div>
+                        <!-- /.widget-user-image -->
+                        <h3 class="widget-user-username">{{info.title}}</h3>
+                        <h5 class="widget-user-desc"></h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                        <ul class="nav nav-stacked">
+                            <li>
+                                <a>{{info.phone}}
+                                    <span class="pull-right badge bg-blue">
+                                        <i class="fa fa-phone"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a>{{info.address}}
+                                    <span class="pull-right badge bg-aqua">
+                                        <i class="fa fa-map-marker"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>{{info.motto}}
+                                    <span class="pull-right badge bg-green">
+                                        <i class="fa fa-fire"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>{{info.email}}
+                                    <span class="pull-right badge bg-red">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.widget-user -->
+            </div>
+            <div class="col-md-8" *ngIf="!hide">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Payments</h3>
+
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" [(ngModel)]="term" class="form-control pull-right" placeholder="Search">
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <div class="scrollable">
+                            <table class="table table-fixed table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            <span class="fa fa-barcode"></span>
+                                        </th>
+                                        <th class="text-center">
+                                            <span class="fa fa-user"></span>
+                                        </th>
+
+                                        <th class="text-center">
+                                            <span class="fa fa-cutlery"></span>
+                                        </th>
+                                        <th class="text-center">
+                                            <span class="fa fa-money"></span>
+                                        </th>
+                                        <th class="text-center">
+                                            <span class="fa fa-credit-card"></span>
+                                        </th>
+
+                                        <th class="text-center">
+                                            <span class="fa fa-dollar"></span>
+                                        </th>
+                                        <th class="text-center">
+                                            <span class="fa fa-user-secret"></span>
+                                        </th>
+                                        <th class="text-center">
+                                            <span class="fa fa-calendar"></span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let pay of payments |filter:term">
+
+                                        <td class="text-center">
+                                            <a [routerLink]="['/receipt/',pay._id]">{{pay._id}}</a>
+                                        </td>
+                                        <td class="text-center">{{pay.student}}</td>
+
+                                        <td class=" text-center">{{pay.food}}</td>
+                                        <td class=" text-center">{{pay.price}}</td>
+                                        <td class="text-center">{{pay.balance}}</td>
+                                        <td class=" text-center">{{pay.amount}}</td>
+                                        <td class="text-center">{{pay.servedby}}</td>
+
+                                        <td class="text-center">{{pay.date}}</td>
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

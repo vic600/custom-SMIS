@@ -1,0 +1,82 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <app-subnav></app-subnav>
+    <section class="content" style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <ngx-spinner color="purple" size="large" type="ball-grid-pulse"></ngx-spinner>
+      <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+          <div class="register-box">
+            <div class="register-logo">
+              <span class="fa fa-bar-chart"> </span>
+            </div>
+
+            <div class="register-box-body">
+              <p class="login-box-msg"> Add Stock</p>
+
+              <form [formGroup]="form" (submit)="onadd()">
+                <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.product.errors && form.controls.product.dirty),'has-success':!form.controls.product.errors}">
+                  <input type="text" name="product" class="form-control" placeholder="Full name" formControlName="product">
+                  <span class="glyphicon glyphicon-gift form-control-feedback"></span>
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.product.errors?.required && form.controls.product.dirty ">product is required</li>
+                    <li *ngIf="(form.controls.product.errors?.minlength || form.controls.product.errors?.maxlength) && form.controls.product.dirty">maximum 10 chars and minimum 4</li>
+                    <li *ngIf="form.controls.product.errors?.validproduct && form.controls.product.dirty">product cannot have special characters</li>
+                  </ul>
+
+                </div>
+                <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.price.errors && form.controls.price.dirty),'has-success':!form.controls.price.errors}">
+                  <input type="number" name="price" class="form-control" placeholder="Price" formControlName="price">
+                  <span class="glyphicon glyphicon-euro form-control-feedback"></span>
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.price.errors?.required && form.controls.price.dirty ">price is required</li>
+
+                    <li *ngIf="form.controls.price.errors?.validprice && form.controls.price.dirty">provide a valid price</li>
+                  </ul>
+
+                </div>
+                <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.stock.errors && form.controls.stock.dirty),'has-success':!form.controls.stock.errors}">
+                  <input type="number" name="stock" class="form-control" placeholder="Stock" formControlName="stock">
+                  <span class="glyphicon glyphicon-list-alt form-control-feedback"></span>
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.stock.errors?.required && form.controls.stock.dirty ">stock is required</li>
+
+                    <li *ngIf="form.controls.stock.errors?.validstock && form.controls.stock.dirty">provide valid stock</li>
+                  </ul>
+
+                </div>
+
+                <div class="row">
+                  <div class="col-md-8">
+
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-4">
+                    <button type="submit" [disabled]="!form.valid || processing" class="btn btn-primary btn-flat">
+                      <span class="fa fa-save"> </span> Save</button>
+                  </div>
+                  <!-- /.col -->
+                </div>
+              </form>
+
+
+
+
+            </div>
+            <!-- /.form-box -->
+          </div>
+          <!-- /.register-box -->
+        </div>
+        <div class="col-md-4">
+
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

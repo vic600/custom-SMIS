@@ -1,0 +1,85 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <section class="content" style="height:1000px;">
+      <ngx-msg></ngx-msg>
+      <ngx-spinner color="red" size="large" type="pacman"></ngx-spinner>
+      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-4">
+        <div class="register-box">
+          <div class="register-logo">
+            <a>
+              <b>Sign Up</b>
+            </a>
+          </div>
+
+          <div class="register-box-body">
+            <p class="login-box-msg">Register a new membership</p>
+
+            <form [formGroup]="form" (submit)="onregister()">
+              <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.username.errors && form.controls.username.dirty),'has-success':!form.controls.username.errors}">
+                <input type="text" class="form-control" name="username" placeholder="Full name" formControlName="username">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">username is required</li>
+                  <li *ngIf="(form.controls.username.errors?.maxlength || form.controls.username.errors?.minlength)&& form.controls.username.dirty">minimum of 4 and maximum of 20</li>
+                  <li *ngIf="form.controls.username.errors?.validateusername && form.controls.username.dirty">username cannot contain special characters</li>
+                </ul>
+              </div>
+              <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.email.errors && form.controls.email.dirty),'has-success':!form.controls.email.errors}">
+                <input type="email" class="form-control" name="email" placeholder="Email" formControlName="email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">email is required</li>
+                  <li *ngIf="(form.controls.email.errors?.maxlength || form.controls.email.errors?.minlength)&& form.controls.email.dirty">email of 4 and maximum of 20</li>
+                  <li *ngIf="form.controls.email.errors?.validateemail && form.controls.email.dirty">provide valid email</li>
+                </ul>
+              </div>
+              <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.password.errors && form.controls.password.dirty),'has-success':!form.controls.password.errors}">
+                <input type="password" class="form-control" name="password" placeholder="Password" formControlName="password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">password is required</li>
+                  <li *ngIf="(form.controls.password.errors?.maxlength || form.controls.password.errors?.minlength)&& form.controls.password.dirty">password of 4 and maximum of 20</li>
+                  <li *ngIf="form.controls.password.errors?.validatepassword && form.controls.password.dirty">uppercase,numbers,small and special characters</li>
+                </ul>
+              </div>
+              <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.confirm.errors && form.controls.confirm.dirty) || (form.errors?.matchingpassword && form.controls.confirm.dirty),'has-success':!form.controls.confirm.errors && !form.errors?.matchingpassword}">
+                <input type="password" class="form-control" name="confirm" placeholder="Retype password" formControlName="confirm">
+                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">confirmation is required</li>
+
+                  <li *ngIf="form.errors?.matchingpassword && form.controls.confirm.dirty">passwords do not match</li>
+                </ul>
+              </div>
+              <div class="row">
+
+                <!-- /.col -->
+                <div class="col-md-4">
+                  <button [disabled]="!form.valid || processing" type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                </div>
+                <!-- /.col -->
+              </div>
+            </form>
+
+
+
+            <a routerLink="/login" class="text-center">I already have a membership</a>
+          </div>
+          <!-- /.form-box -->
+
+
+        </div>
+        <!-- /.register-box -->
+      </div>
+      <div class="col-md-4">
+
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,85 @@
+<header class="main-header">
+  <nav class="navbar navbar-static-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a routerLink="/home" class="navbar-brand">
+          <b>SMIS</b>
+        </a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a *ngIf="authadmin.loggedIn()" routerLink="/dash">
+              <span class="fa fa-tachometer"> </span> Dash</a>
+          </li>
+          <li>
+            <a *ngIf="authadmin.loggedIn()" routerLink="/users">
+              <span class="fa fa-group"> </span> Users</a>
+          </li>
+          <li>
+            <a *ngIf="authadmin.loggedIn()" routerLink="/uniforms">
+              <span class="fa fa-bar-chart"> </span> Stock</a>
+          </li>
+          <li>
+            <a *ngIf="authadmin.loggedIn()" routerLink="/menu">
+              <span class="fa fa-cutlery"> </span> Menu</a>
+          </li>
+          <li>
+            <a *ngIf="authadmin.loggedIn()" routerLink="/info">
+              <span class="fa fa-institution"> </span> School</a>
+          </li>
+          <li>
+            <a *ngIf="authadmin.loggedIn()" routerLink="/bills">
+              <span class="fa fa-opencart"> </span> Orders</a>
+          </li>
+          <li>
+            <a *ngIf="authadmin.loggedIn()" routerLink="/payments">
+              <span class="fa fa-money"> </span> Payments</a>
+          </li>
+          <!-- <li>
+            <a href="#">Link</a>
+          </li> -->
+          <!-- <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+              <li class="divider"></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li> -->
+        </ul>
+
+      </div>
+      <!-- /.navbar-collapse -->
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li>
+            <a *ngIf="!authadmin.loggedIn()" routerLink="/login">
+              <span class="fa fa-sign-in"> </span> Login</a>
+          </li>
+          <li>
+            <a *ngIf="!authadmin.loggedIn()" routerLink="/register">
+              <span class="fa fa-user-plus"> </span> Register</a>
+          </li>
+
+          <li>
+            <a *ngIf="authadmin.loggedIn()" (click)="logout()">
+              <span class="fa fa-sign-out"> </span> Logout</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-custom-menu -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+</header>

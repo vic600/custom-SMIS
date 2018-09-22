@@ -1,0 +1,55 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <app-subnav></app-subnav>
+    <section class="content" style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <ngx-spinner color="yellow" size="large" type="ball-climbing-dot"></ngx-spinner>
+      <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8" *ngIf="!hide">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Users</h3>
+
+              <div class="box-tools">
+                <a routerLink="/user" class="btn btn-default btn-flat btn-block btn-success" >
+                  <span class="fa fa-user-plus"> </span>
+                </a>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                 
+                  <th class="text-center"><span class="fa fa-user"></span></th>
+                  <th class="text-center"><span class="fa fa-envelope"></span></th>
+                  
+                </tr>
+                <tr *ngFor="let user of users">
+                  
+                  <td class="text-center">{{user.username}}</td>
+                  <td class="text-center">{{user.email}}</td>
+                 <td class="text-center"><a [routerLink]="['/delete/',user._id]" class="btn btn-sm btn-danger btn-flat"> <span class="fa fa-trash"></span></a></td>
+                </tr>
+             
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <div class="col-md-2">
+
+        </div>
+      </div>
+
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

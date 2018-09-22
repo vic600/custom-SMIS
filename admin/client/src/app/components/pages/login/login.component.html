@@ -1,0 +1,60 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <section class="content" style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <ngx-spinner color="red" size="large" type="pacman"></ngx-spinner>
+      <div class="login-box">
+        <div class="login-logo">
+          <a>
+            <b></b>Sign In</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+          <p class="login-box-msg">Sign in to start your session</p>
+
+          <form [formGroup]="form" (submit)="onlogin()">
+            <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.email.errors && form.controls.email.dirty),'has-success':!form.controls.email.errors}">
+              <input type="email" class="form-control" name="email" placeholder="Email" formControlName="email">
+              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              <ul class="help-block">
+                <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">Email is required</li>
+                <li *ngIf="(form.controls.email.errors?.minlength || form.controls.email.errors?.maxlength) && form.controls.email.dirty">Minimum of 4 and maximum of 30</li>
+                <li *ngIf="form.controls.email.errors?.validemail && form.controls.email.dirty">Provide a valid email</li>
+              </ul>
+            </div>
+            <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.password.errors && form.controls.password.dirty),'has-success':!form.controls.password.errors}">
+              <input type="password" class="form-control" name="password" placeholder="Password" formControlName="password">
+              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              <ul class="help-block">
+                <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">password is required</li>
+                <li *ngIf="(form.controls.password.errors?.minlength || form.controls.password.errors?.maxlength) && form.controls.password.dirty">Minimum of 8 and maximum of 35</li>
+                <li *ngIf="form.controls.password.errors?.validatepassword && form.controls.password.dirty">uppercase,small,numbers and special characters</li>
+              </ul>
+            </div>
+            <div class="row">
+
+              <!-- /.col -->
+              <div class="col-md-4">
+                <button type="submit" [disabled]="!form.valid || processing" class="btn btn-primary btn-block btn-flat pull-right">Sign In</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+
+
+
+          <a routerLink="/email">I forgot my password</a>
+          <br>
+          <a routerLink="/register" class="text-center">Register a new membership</a>
+
+        </div>
+        <!-- /.login-box-body -->
+
+      </div>
+      <!-- /.login-box -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

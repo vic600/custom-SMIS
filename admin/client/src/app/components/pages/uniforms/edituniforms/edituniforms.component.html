@@ -1,0 +1,69 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <app-subnav></app-subnav>
+    <section class="content" style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <ngx-spinner color="pink" size="large" type="line-spin-fade"></ngx-spinner>
+      <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4" *ngIf="!hide">
+          <div class="register-box">
+            <div class="register-logo">
+              <span class="fa fa-bar-chart"> </span>
+            </div>
+
+            <div class="register-box-body">
+              <p class="login-box-msg"> Edit Stock</p>
+
+              <form (submit)="onedit()">
+                <div class="form-group has-feedback">
+                  <input type="text" name="product" class="form-control" [(ngModel)]="uniform.product" placeholder="Full name">
+                  <span class="glyphicon glyphicon-gift form-control-feedback"></span>
+               
+
+                </div>
+                <div class="form-group has-feedback">
+                  <input type="number" name="price" class="form-control" placeholder="Price" [(ngModel)]="uniform.price">
+                  <span class="glyphicon glyphicon-euro form-control-feedback"></span>
+                
+
+                </div>
+                <div class="col-md-4">
+                  <button (click)="goback()" class="btn btn-warning btn-flat btn-block">
+                    <span class="fa fa-arrow-left"> </span> Cancel</button>
+                </div>
+                <div class="col-md-4">
+                  <a [routerLink]="['/deleteuniform/',uniform._id]" class="btn btn-danger btn-flat btn-block">
+                    <span class="fa fa-trash"> </span> Delete</a>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary btn-flat btn-block">
+                      <span class="fa fa-save"> </span> Save</button>
+                  </div>
+                  <!-- /.col -->
+
+                  <!-- /.col -->
+                </div>
+              </form>
+
+
+
+
+            </div>
+            <!-- /.form-box -->
+          </div>
+          <!-- /.register-box -->
+        </div>
+        <div class="col-md-4">
+
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

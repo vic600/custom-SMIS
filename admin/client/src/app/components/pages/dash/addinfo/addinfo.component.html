@@ -1,0 +1,101 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <app-subnav></app-subnav>
+    <section class="content" style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <ngx-spinner color="orange" size="large" type="pacman"></ngx-spinner>
+      <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+          <div class="register-box">
+            <div class="register-logo">
+              <span class="fa fa-institution"> </span>
+            </div>
+
+            <div class="register-box-body">
+              <p class="login-box-msg"> Add school info</p>
+
+              <form [formGroup]="form" (submit)="addinfo()">
+                <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.title.errors && form.controls.title.dirty),'has-success':!form.controls.title.errors}">
+                  <input type="text" name="title" class="form-control" placeholder="Full name" formControlName="title">
+                  <span class="glyphicon glyphicon-tower form-control-feedback"></span>
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.title.errors?.required && form.controls.title.dirty ">title is required</li>
+                    <li *ngIf="(form.controls.title.errors?.minlength || form.controls.title.errors?.maxlength) && form.controls.title.dirty">maximum 10 chars and minimum 4</li>
+                    <li *ngIf="form.controls.title.errors?.validtitle && form.controls.title.dirty">uppercase letters only</li>
+                  </ul>
+
+                </div>
+                <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.motto.errors && form.controls.motto.dirty),'has-success':!form.controls.motto.errors}">
+                  <input type="text" name="motto" class="form-control" placeholder="Full motto" formControlName="motto">
+                  <span class="glyphicon glyphicon-fire form-control-feedback"></span>
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.motto.errors?.required && form.controls.motto.dirty ">motto is required</li>
+                    <li *ngIf="(form.controls.motto.errors?.minlength || form.controls.motto.errors?.maxlength) && form.controls.motto.dirty">maximum 10 chars and minimum 4</li>
+                    <li *ngIf="form.controls.motto.errors?.validmotto && form.controls.motto.dirty">motto cannot have special characters</li>
+                  </ul>
+
+                </div>
+                <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.address.errors && form.controls.address.dirty),'has-success':!form.controls.address.errors}">
+                  <input type="text" name="address" class="form-control" placeholder="Address" formControlName="address">
+                  <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.address.errors?.required && form.controls.address.dirty ">address is required</li>
+
+                    <li *ngIf="form.controls.address.errors?.validaddress && form.controls.address.dirty">provide a valid address</li>
+                  </ul>
+
+                </div>
+                <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.phone.errors && form.controls.phone.dirty),'has-success':!form.controls.phone.errors}">
+                  <input type="number" name="phone" class="form-control" placeholder="Phone" formControlName="phone">
+                  <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.phone.errors?.required && form.controls.phone.dirty ">phone is required</li>
+
+                    <li *ngIf="form.controls.phone.errors?.validphone && form.controls.phone.dirty">provide a valid phone</li>
+                  </ul>
+
+                </div>
+                <div class="form-group has-feedback" [ngClass]="{'has-error':(form.controls.email.errors && form.controls.email.dirty),'has-success':!form.controls.email.errors}">
+                  <input type="email" name="email" class="form-control" placeholder="email" formControlName="email">
+                  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty ">email is required</li>
+
+                    <li *ngIf="form.controls.email.errors?.validemail && form.controls.email.dirty">provide a valid email</li>
+                  </ul>
+
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    <button type="submit" [disabled]="!form.valid || processing" class="btn btn-primary btn-flat btn-block">
+                      <span class="fa fa-save"> </span> Save</button>
+                  </div>
+                  <!-- /.col -->
+                </div>
+              </form>
+
+
+
+
+            </div>
+            <!-- /.form-box -->
+          </div>
+          <!-- /.register-box -->
+        </div>
+        <div class="col-md-4">
+
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,37 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <section class="content" style="height:1000px">
+        <ngx-msg></ngx-msg>
+        <ngx-spinner color="orange" size="large" type="ball-clip-rotate-multiple"></ngx-spinner>
+      <div class="login-box" *ngIf="!hide">
+        <div class="login-logo">
+          <a>
+            <b></b>Delete User</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+          <p class="login-box-msg">Are you sure you want to delete <b> {{user.username}}</b></p>
+          <div class="row">
+            <div class="col-md-8">
+              <button type="button" (click)="goback()" class="btn btn-primary btn-flat btn-block">
+                <span class="fa fa-arrow-left"> </span> Cancel</button>
+            </div>
+          
+            <!-- /.col -->
+            <div class="col-md-4">
+              <button type="button" (click)="ondelete()" class="btn btn-danger btn-flat btn-block">
+                <span class="fa fa-trash"> </span> Delete</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </div>
+        <!-- /.login-box-body -->
+       
+      </div>
+      <!-- /.login-box -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

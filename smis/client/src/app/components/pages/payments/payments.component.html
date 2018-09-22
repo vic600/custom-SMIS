@@ -1,0 +1,92 @@
+<!-- Full Width Column -->
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="orange" loadingText="Processing..." type="ball-clip-rotate"></ngx-spinner>
+    <!-- Content Header (Page header) -->
+    <app-subnav></app-subnav>
+    <!-- Main content -->
+    <section class="content"  style="height:1000px">
+      <ngx-msg></ngx-msg>
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-6">
+        <div class="row show-hide-message">
+          <div [ngClass]="messageclass">
+            {{message}}
+            <br>
+            <a [routerLink]="['/receipt/',paid]">{{paid}}</a>
+            <a *ngIf="balance" [routerLink]="['/repay/',balance]">{{balance}}</a>
+            <br>
+            <span *ngIf="balance">{{bal}}</span>
+          </div>
+        </div>
+        <!-- Horizontal Form -->
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Make Payment</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form class="form-horizontal" [formGroup]="form" (submit)="onpayment()">
+            <div class="box-body">
+              <div class="form-group"  [ngClass]="{'has-error':(form.controls.food.errors && form.controls.food.dirty),'has-success':!form.controls.food.errors}">
+                <label for="inputEmail3" class="col-sm-2 control-label">Meal</label>
+
+                <div class="col-sm-10">
+
+                  <select class="form-control" name="food" formControlName="food">
+                    <option *ngFor="let item of meals" [value]="item.food">{{item.food}}</option>
+                  </select>
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.food.errors?.required && form.controls.food.dirty">product is reqired</li>
+  
+                  </ul>
+                </div>
+             
+              </div>
+              <div class="form-group" [ngClass]="{'has-error':(form.controls.student.errors && form.controls.student.dirty),'has-success':!form.controls.student.errors}">
+                <label for="inputPassword3" class="col-sm-2 control-label">Student Name</label>
+
+                <div class="col-sm-10">
+                  <input type="text" name="student" class="form-control" placeholder="student name" formControlName="student">
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.student.errors?.required && form.controls.student.dirty">Student name is reqired</li>
+                    <li *ngIf="form.controls.student.errors?.validstudent && form.controls.student.dirty">Student name must be a character</li>
+                  </ul>
+                </div>
+                
+              </div>
+              <div class="form-group" [ngClass]="{'has-error':(form.controls.amount.errors && form.controls.amount.dirty),'has-success':!form.controls.amount.errors}">
+                <label for="inputPassword3" class="col-sm-2 control-label">Amount</label>
+
+                <div class="col-sm-10">
+                  <input type="Number" name="amount" class="form-control" placeholder="Amount" formControlName="amount">
+                </div>
+                <ul class="help-block">
+                  <li *ngIf="form.controls.amount.errors?.required && form.controls.amount.dirty">Amount is reqired</li>
+                  <li *ngIf="form.controls.amount.errors?.validamount && form.controls.amount.dirty">Amount must be a Number</li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <!-- <button type="submit" class="btn btn-default">Cancel</button> -->
+              <button [disabled]="!form.valid || processing" type="submit" class="btn btn-success pull-right btn-flat">Pay</button>
+            </div>
+            <!-- /.box-footer -->
+          </form>
+
+        </div>
+        <!-- /.box -->
+      </div>
+      <div class="col-md-3">
+
+      </div>
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->
